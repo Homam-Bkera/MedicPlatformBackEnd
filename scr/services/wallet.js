@@ -14,12 +14,12 @@ class walletService {
         const userWallet = await Wallet.findOne({ where: { userId: this.userId } });
         return await Wallet.update({ cash: userWallet.cash + this.cash }, { where: { userId: this.userId } });
     }
-    async buy(amount, transaction) {
+    async buy(amount) {
         const userWallet = await Wallet.findOne({ where: { userId: this.userId } });
-        return await Wallet.update({ cash: userWallet.cash - amount }, { where: { userId: this.userId } }, { transaction: transaction });
+        return await Wallet.update({ cash: userWallet.cash - amount }, { where: { userId: this.userId } });
     }
-    async getWallet(userId) {
-        return await Wallet.findOne({ where: { userId: userId } });
+    async getWallet() {
+        return await Wallet.findOne({ where: { userId: this.userId } });
     }
 }
 module.exports = walletService

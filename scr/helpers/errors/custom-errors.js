@@ -72,7 +72,6 @@ class CustomError {
 
                         error.path = error.path.replace("_UNIQUE", "");
                 }
-                // messages[error.path] = message;
                 let errors = { message: message, "statusCode": 422 };
                 res.status(422).send(errors);
 

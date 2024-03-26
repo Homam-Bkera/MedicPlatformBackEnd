@@ -6,13 +6,8 @@ class OrderItemService {
         this.qty = qty;
     }
 
-    async add(items, transaction) {
-        await OrderItem.bulkCreate(items).then(() => {
-            transaction.commit()
-        }).catch((err) => {
-            console.log(err);
-            transaction.rollback();
-        });
+    async add(items,transaction) {
+        return await OrderItem.bulkCreate(items,{transaction:transaction});
     }
 }
 module.exports = OrderItemService;

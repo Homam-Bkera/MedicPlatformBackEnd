@@ -5,11 +5,12 @@ const Category = require("../models/category");
 const Storage = require("../models/storage");
 
 class MedicineService {
-    constructor({ name, categoryId, qty, price }) {
+    constructor({ name, categoryId, qty, price,image }) {
         this.name = name;
         this.categoryId = categoryId;
         this.qty = qty;
         this.price = price;
+        this.image = image;
     }
 
     async add() {
@@ -17,7 +18,8 @@ class MedicineService {
             name: this.name,
             categoryId: this.categoryId,
             qty: this.qty,
-            price: this.price
+            price: this.price,
+            image:this.image
         });
     }
 
@@ -25,11 +27,12 @@ class MedicineService {
         return await Medicine.update({
             name: this.name,
             qty: this.qty,
-            price: this.price
+            price: this.price,
+            image:this.image
         }, { where: { id: id } });
     }
     async updateQty(id, qty, transaction) {
-        return await Medicine.update({ qty: qty }, { where: { id: id } }, { transaction: transaction });
+        return await Medicine.update({ qty: qty }, { where: { id: id } ,transaction: transaction});
     }
     async delete(id) {
         return await Medicine.destroy({ where: { id: id } });

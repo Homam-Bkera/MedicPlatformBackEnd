@@ -14,8 +14,8 @@ module.exports = {
         updateResponseSender(res, 'Storage');
     },
     delete: async (req, res) => {
-        const { storageId } = req.query;
-        const result = await new StorageService({}).delete();
+        const { id } = req.query;
+        const result = await new StorageService({}).delete(id);
         responseSender(res, result);
     },
     getAll: async (req, res) => {

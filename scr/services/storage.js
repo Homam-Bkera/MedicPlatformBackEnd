@@ -25,10 +25,10 @@ class StorageService {
         }, { where: { id: id } });
     }
     async delete(id) {
-        const categories = await CategoryService({}).getAllByStorageId();
-        for (let i = 0; i < categories.length(); i++) {
-            await MedicineService({}).deleteByCategoryId(categories[i].id);
-            await CategoryService({}).delete(categories[i].id);
+        const categories = await new CategoryService({}).getAllByStorageId(id);
+        for (let i = 0; i < categories.length; i++) {
+            await new MedicineService({}).deleteByCategoryId(categories[i].id);
+            await new CategoryService({}).delete(categories[i].id);
         }
         return await Storage.destroy({ where: { id: id } });
     }

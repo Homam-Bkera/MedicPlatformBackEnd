@@ -5,12 +5,14 @@ const logger = require('morgan');
 const app = express();
 const models = require("./models");
 
+app.use(express.static(__dirname + '/public'));
 // Log requests to the console.
 app.use(logger('dev'));
 //to synchronizing all models at once
 sequelize.sync({ alter: false }).then((_) => {
     console.log("connected to db successfully");
     app.use(express.urlencoded({ extended: false }));
+    app.use(express.json({}));
     app.use(require("./routers"));
     app.use(require("./helpers/errors/custom-errors").defaultHandler);
     app.listen(port, () => {

@@ -9,6 +9,8 @@ const updateResponseSender = require("../helpers/wrappers/response-sender").upda
 module.exports = {
     add: async (req, res) => {
         const { body } = req;
+        if(req.file)
+            body.image = req.file.filename;
         const category = await new CategoryService({}).getOne(body.categoryId);
         if(category.storageId != req.storageId)
             throw new CustomError(errors.Not_Authorized);
@@ -18,6 +20,8 @@ module.exports = {
     update: async (req, res) => {
         const { id } = req.query;
         const { body } = req;
+        if(req.file)
+            body.image = req.file.filename;
         const result = await new MedicineService({ ...body }).update(id);
         updateResponseSender(res, 'Medicine');
     },

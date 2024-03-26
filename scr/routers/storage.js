@@ -7,5 +7,5 @@ router.post("/", apiHandler(verifyAdminToken), apiHandler(controller.add));
 router.put("/", apiHandler(verifyAdminToken), apiHandler(controller.update));
 router.get("/all", apiHandler(controller.getAll));
 router.get("/one", apiHandler(controller.getOne));
-router.delete("/delete", apiHandler(verifyAdminToken), apiHandler(controller.delete));
+//router.delete("/delete", apiHandler(verifyAdminToken), apiHandler(controller.delete));
 module.exports = router;
