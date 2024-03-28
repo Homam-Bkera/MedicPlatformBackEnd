@@ -1,7 +1,6 @@
 const CategoryService = require("../services/category");
 const MedicineService = require("../services/medicine");
-const responseSender = require("../helpers/wrappers/response-sender").responseSender;
-const updateResponseSender = require("../helpers/wrappers/response-sender").updateResponseSender;
+const { responseSender, updateResponseSender } = require("../helpers/wrappers/response-sender");
 
 module.exports = {
     add: async (req, res) => {

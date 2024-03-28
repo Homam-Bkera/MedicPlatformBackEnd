@@ -1,10 +1,10 @@
 {
-    "port": 10000,
-    "db": {
-      "host": "bplbvws7aif7oxc0igsy-mysql.services.clever-cloud.com",
-      "database": "bplbvws7aif7oxc0igsy",
-      "username": "uvkqjklvjzlezozb",
-      "password": "alY7uSPgq7qNhQcBeoSL",
-      "dialect":"mysql"
-    }
+  "port": 8080,
+  "db": {
+    "host": "localhost",
+    "database": "medic",
+    "username": "root",
+    "password": "12345",
+    "dialect":"mysql"
   }
+}

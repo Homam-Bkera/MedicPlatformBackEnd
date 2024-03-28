@@ -2,7 +2,7 @@ const sequelize = require("../helpers/db/init");
 const OrderService = require("../services/order");
 const MedicineService = require("../services/medicine");
 const OrderItemService = require("../services/orderItem");
-const responseSender = require("../helpers/wrappers/response-sender").responseSender;
+const { responseSender } = require("../helpers/wrappers/response-sender");
 const CustomError = require("../helpers/errors/custom-errors");
 const errors = require("../helpers/errors/errors.json");
 const WalletService = require("../services/wallet");
@@ -20,7 +20,7 @@ module.exports = {
                 let med = await new MedicineService({}).getOne(body.meds[i].id);
                 if (body.meds[i].qty > med.qty)
                     throw new CustomError(errors.You_Can_Not_Do_This);
-                
+
                 med.qty -= body.meds[i].qty
                 await new MedicineService({}).updateQty(med.id, med.qty, transaction);
                 let item = {
@@ -57,10 +57,10 @@ module.exports = {
         const result = await new OrderService({}).getAllByAdmin(storageId);
         responseSender(res, result);
     },
-    getAllStorageOrdersByStatus:async (req,res)=>{
-        const {status} = req.query;
+    getAllStorageOrdersByStatus: async (req, res) => {
+        const { status } = req.query;
         const storageId = req.storageId;
-        const result = await new OrderService({}).getAllByStatus(storageId,status);
+        const result = await new OrderService({}).getAllByStatus(storageId, status);
         responseSender(res, result);
     },
     acceptOrder: async (req, res) => {

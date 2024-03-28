@@ -37,8 +37,6 @@ verifyAdminToken = async (req, res, next) => {
             next();
         } else {
             const storageAdmin = await new StorageAdminService({}).getAdmin(user.id);
-            if (storageAdmin.storageId != decoded.storageId)
-                throw new CustomError(errors.Not_Authorized);
             req.user = user.id;
             req.role = user.role;
             req.storageId = storageAdmin.storageId;

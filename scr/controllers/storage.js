@@ -1,6 +1,5 @@
 const StorageService = require("../services/storage");
-const responseSender = require("../helpers/wrappers/response-sender").responseSender;
-const updateResponseSender = require("../helpers/wrappers/response-sender").updateResponseSender;
+const { responseSender, updateResponseSender } = require("../helpers/wrappers/response-sender");
 module.exports = {
     add: async (req, res) => {
         const { body } = req;

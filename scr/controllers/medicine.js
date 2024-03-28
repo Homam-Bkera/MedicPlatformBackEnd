@@ -2,9 +2,7 @@ const MedicineService = require("../services/medicine");
 const CategoryService = require("../services/category");
 const CustomError = require("../helpers/errors/custom-errors");
 const errors = require("../helpers/errors/errors.json");
-const responseSender = require("../helpers/wrappers/response-sender").responseSender;
-const ResponseSenderWithCredential = require("../helpers/wrappers/response-sender").ResponseSenderWithCredential;
-const updateResponseSender = require("../helpers/wrappers/response-sender").updateResponseSender;
+const { responseSender, updateResponseSender } = require("../helpers/wrappers/response-sender");
 
 module.exports = {
     add: async (req, res) => {
