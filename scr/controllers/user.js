@@ -41,6 +41,12 @@ module.exports = {
         body.userId = req.userId;
         const result = await new walletService({ ...body }).charge();
         responseSender(res, result);
+    },
+    getUserWallet:async (req,res)=>{
+        const {body} = req;
+        body.userId = req.userId;
+        const result = await new walletService({...body}).getWallet();
+        responseSender(res,result);
     }
 
 };

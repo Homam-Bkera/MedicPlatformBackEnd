@@ -9,4 +9,5 @@ router.post("/login", apiHandler(controller.login));
 router.post("/chargeWallet", apiHandler(verifyUserToken), apiHandler(controller.chargeWallet));
 router.put("/",apiHandler(verifyUserToken),apiHandler(controller.update));
 router.get("/profile", apiHandler(verifyUserToken), apiHandler(controller.getById));
+router.get("/wallet", apiHandler(verifyUserToken), apiHandler(controller.getUserWallet));
 module.exports = router;
