@@ -7,6 +7,7 @@ const secretKey = require("../helpers/db/config.secret");
 const Role = require("../helpers/roles");
 const { Op } = require("sequelize");
 const StorageAdminService = require("./storageAdmin");
+const StorageAdmin = require("../models/storageAdmin");
 const walletService = require("./wallet");
 const Wallet = require("../models/wallet");
 
@@ -43,7 +44,7 @@ class UserService {
         if (!this.phone || !this.password) {
             throw new CustomError(errors.You_Should_fill_All_The_Filds);
         }
-        const user = await User.findOne({ where: { phone: this.phone }, include: Wallet });
+        const user = await User.findOne({ where: { phone: this.phone }, include: [{model:Wallet,model:StorageAdmin}] });
         if (!user)
             throw new CustomError(errors.Entity_Not_Found);
         let passwordIsValid = bcrypt.compareSync(
