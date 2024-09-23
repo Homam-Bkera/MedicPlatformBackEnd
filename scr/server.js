@@ -5,8 +5,8 @@ const logger = require('morgan');
 const cors = require('cors');
 const app = express();
 const models = require("./models");
-
-app.use(express.static(__dirname + '/public'));
+const path = require('path');
+app.use(express.static(path.join(__dirname, "../public")));
 // Log requests to the console.
 app.use(logger('dev'));
 //allow the client to access the server
